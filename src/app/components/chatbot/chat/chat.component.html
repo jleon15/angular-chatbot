@@ -1,3 +1,27 @@
-<p>
-  chat works!
-</p>
+<div class="container-fluid">
+  <div class="row" id="chatbox">
+    <div *ngFor="let message of chatMessages" class="message" [ngClass]="{'bot-message': message.fromBot}">
+
+      <div *ngIf="message.fromBot; else elseBlock" class="bot-name">Genius</div>
+      <ng-template #elseBlock>
+        <div class="name">You</div>
+      </ng-template>
+
+      <div>{{message.content}}</div>
+
+    </div>
+
+    <div *ngIf="isBotTyping" class="bot-typing">&#8230;</div>
+
+  </div>
+
+  <form id="question-form" (ngSubmit)="onUserSubmit(askForm)" #askForm="ngForm">
+
+    <textarea class="user-question-input" name="question" placeholder="Enter your question" ngModel required></textarea>
+
+    <button class="btn btn-primary submit-button" type="submit" [disabled]="!askForm.valid">Ask question</button>
+
+    <button class="btn btn-secondary clear-button">Clear</button>
+
+  </form>
+</div>
