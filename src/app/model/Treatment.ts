@@ -2,13 +2,13 @@ import {Medicine} from './Medicine';
 
 export class Treatment {
 
-  id: number;
   medicines: Medicine[];
   physicalTreatment: string;
 
 
-  constructor(id: number) {
-    this.id = id;
+  constructor(medicines: Medicine[], physicalTreatment: string) {
+    this.medicines = medicines;
+    this.physicalTreatment = physicalTreatment;
   }
 
   addMedicine(medicine: Medicine) {
