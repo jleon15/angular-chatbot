@@ -9,7 +9,7 @@ import {AuthenticationService} from '../../../services/authentication/authentica
 })
 export class LoginComponent implements OnInit {
 
-  private static ID_REGEX: RegExp = new RegExp(/^[1-9]\d{4}\d{4}$/);
+  private static ID_REGEX: RegExp = new RegExp('^[0-9]{9,10}$');
   public IDIsValid: boolean;
   private invalidCredentials: boolean;
   private organizationIdentifier: string;
