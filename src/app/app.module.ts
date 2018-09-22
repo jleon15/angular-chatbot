@@ -8,12 +8,14 @@ import {FormsModule} from '@angular/forms';
 import {ChatService} from './services/chat/chat.service';
 import {HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './components/authentication/login/login.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChatComponent,
-    LoginComponent
+    LoginComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
