@@ -3,11 +3,11 @@ import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class AuthenticationService {
-  private static commonUrl: string = 'http://localhost:8080/ws/';
-  private loginUrl: string = 'login';
+  private commonUrl: string = 'http://localhost:8080/ws/';
+  private loginUrl: string = this.commonUrl + 'login';
   private loggedInUrl: string = 'http://ws.talent.cr/ws/user/loggedIn';
   private authenticatedUrl: string = 'http://ws.talent.cr/ws/user/authenticated';
-  private signUpUrl: string = 'manager-user';
+  private signUpUrl: string =  this.commonUrl + 'manager-user';
 
   constructor(private http: HttpClient) { }
 
