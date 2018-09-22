@@ -1,79 +1,112 @@
-<div class="row">
-  <div class="title">Registro de un menor</div>
-</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="title">Registro de un menor</div>
+  </div>
 
-<div class="row form-row">
-  <form (ngSubmit)="onSubmit(childForm)" class="form" #childForm="ngForm">
-    <div>
-      <div class="form-group">
-        <p class="input-label">Nombre completo</p>
-        <input class="form-control" type="text" placeholder="Nombre completo" ngModel name="name" required/>
-      </div>
-
-      <div class="form-group">
-        <p class="input-label">Cedula</p>
-        <input class="form-control" type="text" placeholder="Cedula" ngModel name="username" required/>
-      </div>
-
-      <div class="form-group">
-        <p class="input-label">Edad</p>
-        <input class="form-control" type="number" placeholder="Edad" ngModel name="age" required/>
-      </div>
-
-      <div class="form-group">
-        <p class="input-label">Gender</p>
-        <div class="select-arrow">
-          <select [ngModel]="'Masculino'" name="gender" required>
-            <option value="Masculino" selected>Male</option>
-            <option value="Femenino">Female</option>
-          </select>
+  <div class="row form-row">
+    <form (ngSubmit)="onSubmit(childForm)" class="form" #childForm="ngForm">
+      <div>
+        <div class="form-group">
+          <p class="input-label">Nombre completo</p>
+          <input class="form-control" type="text"
+                 placeholder="Nombre completo" #name="ngModel" ngModel name="name" required minlength="2" maxlength="35"/>
+          <div *ngIf="name.invalid" class="error">El nombre debe tener entre 2 y 35 caracteres.</div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <p class="input-label">Enfermedades</p>
-        <textarea class="issue-input" name="diseases" id="diseases" ngModel required></textarea>
-      </div>
-
-      <div class="form-group">
-        <p class="input-label">Etnia</p>
-        <div class="select-arrow">
-          <select [ngModel]="'Afro costarricense'" name="ethnicity" required>
-            <option value="Afro costarricense" selected>Afro costarricense</option>
-            <option value="Asiatico">Asiatico</option>
-            <option value="Blanco">Blanco</option>
-            <option value="Mestizo">Mestizo</option>
-            <option value="Indigena">Indigena</option>
-          </select>
+        <div class="form-group">
+          <p class="input-label">Cedula</p>
+          <input class="form-control" type="text" placeholder="Cedula" ngModel name="username" required maxlength="10"/>
+          <p class="note">No digite guiones ni espacios en blanco.</p>
         </div>
-      </div>
 
-      <h3>Tratamientos</h3>
+        <div class="form-group">
+          <p class="input-label">Edad</p>
+          <input class="form-control" type="number" placeholder="Edad" ngModel name="age" required maxlength="2"/>
+        </div>
 
-      <div *ngFor="" class="treatments">
-
-        <h5>Medicinas</h5>
-        <div *ngFor="" class="medicines">
-          <div class="form-group">
-            <p class="input-label">Nombre</p>
-            <input class="form-control" type="text" placeholder="Nombre" ngModel name="medicineName" required/>
-          </div>
-
-          <div class="form-group">
-            <p class="input-label">Cedula</p>
-            <input class="form-control" type="text" placeholder="Cedula" ngModel name="username" required/>
-          </div>
-
-          <div class="form-group">
-            <p class="input-label">Edad</p>
-            <input class="form-control" type="number" placeholder="Edad" ngModel name="age" required/>
+        <div class="form-group">
+          <p class="input-label">Gender</p>
+          <div class="select-arrow">
+            <select [ngModel]="'Masculino'" name="gender" required>
+              <option value="Masculino" selected>Masculino</option>
+              <option value="Femenino">Femenino</option>
+            </select>
           </div>
         </div>
 
+        <h2>Antecedentes</h2>
+
+        <h3>Tratamientos</h3>
+
+        <div class="horizontal-line"></div>
+
+        <div *ngFor="let treatment of treatmentInputs" class="treatments">
+
+          <h5>Medicinas</h5>
+          <div *ngFor="let medicineInput of treatment.medicineInputs" class="medicines">
+            <div class="form-group">
+              <p class="input-label">Nombre</p>
+              <input class="form-control" type="text" placeholder="Nombre" ngModel
+                     name="medicineName{{medicineInput.id}}" #medicineName="ngModel" required minlength="2" maxlength="30"/>
+              <div *ngIf="name.invalid" class="error">El nombre debe tener entre 2 y 30 caracteres.</div>
+            </div>
+
+            <div class="form-group">
+              <p class="input-label">Fecha</p>
+              <input class="form-control" type="text" placeholder="Fecha" ngModel name="medicineDate{{medicineInput.id}}" required/>
+            </div>
+
+            <div class="form-group">
+              <p class="input-label">Duracion</p>
+              <input class="form-control" type="number" placeholder="Edad" ngModel id="medicineDuration"
+                     name="medicineDuration{{medicineInput.id}}" required
+                     #medicineDuration="ngModel"
+                     (mouseout)="validateMedicineDuration(medicineDuration, medicineInput)"/>
+              <div *ngIf="medicineInput.isDurationInvalid" class="error">La duracion debe ser entre 0 y 365.</div>
+            </div>
+
+            <div class="horizontal-line"></div>
+
+          </div>
+
+          <button class="btn btn-primary add-button" type="button" (click)="treatment.addMedicineInput()">Agregar medicina</button>
+
+          <div class="form-group">
+            <p class="input-label">Tratamientos fisicos</p>
+            <textarea class="issue-input" name="physicalTreatments{{treatment.id}}"
+                      id="physicalTreatments" ngModel required #pt="ngModel" minlength="1" maxlength="500"></textarea>
+            <div *ngIf="pt.invalid" class="error">Debe tener entre 1 y 500 caracteres.</div>
+          </div>
+
+          <div class="horizontal-line"></div>
+
+        </div>
+
+        <button class="btn btn-primary add-button" type="button" (click)="onAddTreatment()">Agregar tratamiento</button>
+
+        <div class="form-group">
+          <p class="input-label">Enfermedades</p>
+          <textarea class="issue-input" name="diseases" id="diseases"
+                    ngModel required #diseases="ngModel" minlength="1" maxlength="500"></textarea>
+          <div *ngIf="diseases.invalid" class="error">Debe tener entre 1 y 500 caracteres.</div>
+        </div>
+
+        <div class="form-group">
+          <p class="input-label">Etnia</p>
+          <div class="select-arrow">
+            <select [ngModel]="'Blanco'" name="ethnicity" required>
+              <option value="Afro costarricense">Afro costarricense</option>
+              <option value="Asiatico">Asiatico</option>
+              <option value="Blanco" selected>Blanco</option>
+              <option value="Mestizo">Mestizo</option>
+              <option value="Indigena">Indigena</option>
+            </select>
+          </div>
+        </div>
+
       </div>
 
-    </div>
-
-    <button class="btn btn-primary submit-button" type="submit" [disabled]="!childForm.valid">Registrar</button>
-  </form>
+      <button class="btn btn-primary submit-button" type="submit" [disabled]="!childForm.valid">Registrar</button>
+    </form>
+  </div>
 </div>

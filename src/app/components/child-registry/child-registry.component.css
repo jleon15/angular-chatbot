@@ -18,13 +18,15 @@
 .form-row {
   min-height: 85vh;
   display: block;
+  margin: auto;
 }
 .form {
-  width: 100%;
+  width: 70%;
   padding-top: 40px;
   padding-bottom: 130px;
   min-height: 808px;
   display: block;
+  margin: auto;
 }
 
 .form-group {
@@ -109,6 +111,40 @@ textarea.issue-input {
   letter-spacing: -0.4px;
   line-height: 20px;
   display: block;
+}
+
+.add-button {
+  min-height: 39px;
+  width: 140px;
+  border-radius: 8px;
+  background-color: #EFA42F;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-style: none;
+  color: #FFFFFF;
+  font-size: 16px;
+  letter-spacing: -0.4px;
+  line-height: 20px;
+  display: block;
+}
+
+.horizontal-line {
+  width: 100%;
+  border: 1px solid #294261;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.error {
+  color: #C4183C;
+  margin-top: 4px;
+  margin-bottom: 3px;
+  font-size: 18px;
+}
+
+.note {
+  font-size: 12px;
+  color: lightgray;
 }
 
 button.btn[disabled] {

@@ -9,7 +9,7 @@ export class AuthenticateService {
   static readonly LOGOUT_URL = '';
   static readonly lLOGGED_IN_URL = '';
   static readonly AUTHENTICATED_URL = '';
-  static readonly REGISTER_CHILD_URL = '';
+  static readonly REGISTER_CHILD_URL = 'http://localhost:8080/ws/child';
 
   constructor(private http: HttpClient) {
   }
@@ -24,9 +24,10 @@ export class AuthenticateService {
   }
 
   registerChild(fullName: string, username: string, age: string,
-                gender: string, treatments: Treatment[], diseases: string, ethnicity: string): Promise<any> {
+                gender: string, treatments: string, diseases: string, ethnicity: string): Promise<any> {
     const bodyParameters = `fullName=${fullName}&username=${username}&age=${age}&gender=${gender}&treatments=${treatments}
       &diseases=${diseases}&ethnicity=${ethnicity}`;
+    console.log(bodyParameters);
     return this.http
       .post(AuthenticateService.REGISTER_CHILD_URL, bodyParameters,
         {headers: {'Content-Type': 'application/x-www-form-urlencoded'}, withCredentials: true}).toPromise();
