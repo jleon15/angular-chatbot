@@ -24,9 +24,9 @@
       <div class="email-error" [hidden]="phoneIsValid">Teléfono inválido.</div>
 
       <p class="input-label password-label">Contraseña</p>
-      <input email type="password" [ngClass]="(passwordIsValid)?'input':'input input-error'" #passwordInput placeholder="Contraseña" (blur)="validatePassword(passwordInput.value, $event)" (keyup)="validatePassword(phoneInput.value, $event); clearSignUpError()"
+      <input type="password" [ngClass]="(passwordIsValid)?'input':'input input-error'" #passwordInput placeholder="Contraseña" (blur)="validatePassword(passwordInput.value, $event)" (keyup)="validatePassword(passwordInput.value, $event); clearSignUpError()"
       />
-      <div class="email-error" [hidden]="phoneIsValid">Contraseña inválida.</div>
+      <div class="email-error" [hidden]="passwordIsValid">Contraseña inválida.</div>
 
 
 

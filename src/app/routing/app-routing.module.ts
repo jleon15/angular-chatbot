@@ -6,8 +6,8 @@ import {AuthenticationService} from '../services/authentication/authentication.s
 import {LandingPageComponent} from '../components/landing-page/landing-page.component';
 
 const routes: Routes = [
-  {path: '', component: LandingPageComponent},
-  {path: 'login', component: LoginComponent},
+  {path: '', component: LoginComponent},
+  {path: 'sign-up', component: LandingPageComponent},
   {path: 'chat', component: ChatComponent}
 ];
 
