@@ -7,11 +7,13 @@ import { ChatComponent } from './components/chatbot/chat/chat.component';
 import {FormsModule} from '@angular/forms';
 import {ChatService} from './services/chat/chat.service';
 import {HttpClientModule} from '@angular/common/http';
+import { LoginComponent } from './components/authentication/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChatComponent
+    ChatComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
