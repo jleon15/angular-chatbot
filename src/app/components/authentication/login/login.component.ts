@@ -30,11 +30,10 @@ export class LoginComponent implements OnInit {
    * @param email the email entered in the email field
    * @param password the password entered in the password field
    */
-  public login(email: string, password: string) {
-    this.authenticationService.login(email, password, this.organizationIdentifier)
+  public login(id: string, password: string) {
+    this.authenticationService.login(id, password)
       .subscribe(() => {
-        this.authenticationService.storeUser()
-          .then(() => this.router.navigate(['/dashboard']));
+        this.router.navigate(['/chat']);
         location.reload();
       }, () => this.invalidCredentials = true);
   }

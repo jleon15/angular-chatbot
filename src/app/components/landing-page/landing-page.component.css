@@ -40,7 +40,9 @@
   text-align: left;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 3%;
 }
+
 
 .input {
   width: 55.11%;
@@ -70,7 +72,7 @@
 }
 
 .password-label {
-  margin-top: 4%;
+  margin-top: 3%;
 }
 
 #enter-button {
@@ -102,20 +104,4 @@
   text-align: left;
 }
 
-@media only screen and (max-width: 1000px) {
-  #handshake {
-    display: none;
-  }
-}
 
-#handshake {
-  background: #6DC72A;
-  background-position: center;
-  background-size: cover
-}
-
-@media only screen and (max-width: 1000px) {
-  #handshake {
-    display: none;
-  }
-}

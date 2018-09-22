@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AuthenticationService} from '../../services/authentication/authentication.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -8,36 +10,51 @@ import { Component, OnInit } from '@angular/core';
 
 export class LandingPageComponent implements OnInit {
 
-  private static EMAIL_REGEX: RegExp = new RegExp('[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?');
+  private static EMAIL_REGEX: RegExp = new RegExp('^(?!.*(\\.)\\1)([a-z0-9])+([a-z0-9]|\\-|\\.|\\_)+[a-z0-9]@(?!.*(\\.[a-z]\\.[a-z]))((?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)[a-z0-9](?:[a-z0-9]*[a-z0-9])?)([a-z0-9]+)$');
   private static ID_REGEX: RegExp = new RegExp('/^[1-9]-?\\d{4}-?\\d{4}$/');
-  private static PASSWORD_REGEX: RegExp = new RegExp ('');
-  private static NAME_REGEX: RegExp = new RegExp('[azAZ]{2,35}');
+  private static PASSWORD_REGEX: RegExp = new RegExp ('^(?!.*(.)\\1)(?=.*([A-Z]))(?=.*([a-z]))(?=.*(\\!|\\@|\\$|\\%|\\*|\\(|\\)|\\<|\\>|\\?|\\:|\\{|\\}|\\+|\\‐|\\~))([a-z]|[A-Z]|(\\!|\\@|\\$|\\%|\\*|\\(|\\)|\\<|\\>|\\?|\\:|\\{|\\}|\\+|\\‐|\\~)){7,}');
+  private static NAME_REGEX: RegExp = new RegExp('^(([A-Z][a-z]+)(\\ )?)*([A-Z][a-z]+)$');
   private static PHONE_NUMBER_REGEX: RegExp = new RegExp('[0-9]{8}');
 
 
-  public emailIsValid: boolean
-  public phoneIsValid: boolean
-  public nameIsValid: boolean
-  public passwordIsValid: boolean
-  public IDIsValid: boolean
+  public emailIsValid: boolean;
+  public phoneIsValid: boolean;
+  public nameIsValid: boolean;
+  public passwordIsValid: boolean;
+  public IDIsValid: boolean;
+  private invalidCredentials: boolean;
 
-  constructor() {
+  constructor(private route: ActivatedRoute, private router: Router, private authenticationService: AuthenticationService) {
     this.emailIsValid = true;
     this.phoneIsValid = true;
     this.nameIsValid = true;
     this.passwordIsValid = true;
     this.IDIsValid = true;
+    this.invalidCredentials = false;
   }
 
   ngOnInit() {
+  }
+
+  signUp(name: string, email: string, id: string, phone: string, password: string) {
+    this.authenticationService.signUp(name, email, id, phone, password).subscribe(() => {
+      this.router.navigate(['/chat']);
+      location.reload();
+    }, () => this.invalidCredentials = true);
   }
 
   validateEmail(email: string, event: any) {
     if (event.type == 'keyup' && !this.emailIsValid) {
       // only validate email on keyup if it has been identified as invalid
       this.emailIsValid = LandingPageComponent.EMAIL_REGEX.test(email);
+      if (email.length < 7 || email.length > 256) {
+        this.emailIsValid = false;
+      }
     } else if (event.type == 'blur') { // always validate the email on blur
       this.emailIsValid = LandingPageComponent.EMAIL_REGEX.test(email);
+      if (email.length < 7 || email.length > 256) {
+        this.emailIsValid = false;
+      }
     }
   }
 
@@ -75,6 +92,10 @@ export class LandingPageComponent implements OnInit {
     } else if (event.type == 'blur') { // always validate the email on blur
       this.IDIsValid = LandingPageComponent.ID_REGEX.test(id);
     }
+  }
+
+  clearSignUpError() {
+    this.invalidCredentials = false;
   }
 
 }
