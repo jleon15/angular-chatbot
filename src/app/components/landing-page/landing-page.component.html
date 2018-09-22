@@ -1,0 +1,29 @@
+<div class="container-fluid page-div" id="container-fluid">
+  <div id=form-content>
+    <div class="sign-in-error" [hidden]="!invalidCredentials">Cédula o contraseña incorrecta.</div>
+
+    <form>
+      <p class="input-label">Nombre</p>
+      <input type="name" [ngClass]="(nameIsValid)?'input':'input input-error'" #emailInput placeholder="Nombre completo" (blur)="validateCompleteName(emailInput.value, $event)" (keyup)="validateEmail(emailInput.value, $event); clearSignInError()"
+      />
+      <div class="email-error" [hidden]="emailIsValid">Invalid email.</div>
+
+      <p class="input-label">Email</p>
+      <input email type="email" [ngClass]="(emailIsValid)?'input':'input input-error'" #emailInput placeholder="Email" (blur)="validateEmail(emailInput.value, $event)" (keyup)="validateEmail(emailInput.value, $event); clearSignInError()"
+      />
+      <div class="email-error" [hidden]="emailIsValid">Invalid email.</div>
+
+      <p class="input-label">Cédula</p>
+      <input email type="id" [ngClass]="(IDIsValid)?'input':'input input-error'" #emailInput placeholder="Cédula" (blur)="validateIDNumber(emailInput.value, $event)" (keyup)="validateIDNumber(emailInput.value, $event); clearSignInError()"
+      />
+      <div class="email-error" [hidden]="IDIsValid">Cédula inválida.</div>
+
+      <p class="input-label password-label">Contraseña</p>
+      <input class="input" #passwordInput placeholder="Password" type="password" (keyup)="clearSignInError()"/>
+
+      <button id="enter-button" (click)="login(emailInput.value, passwordInput.value)">Ingresar</button>
+    </form>
+
+  </div>
+
+</div>
