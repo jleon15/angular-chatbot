@@ -28,6 +28,7 @@ export class ChildRegistryComponent implements OnInit {
     gender: '',
     diseases: '',
     ethnicity: '',
+    relation: ''
   };
 
   constructor(private router: Router, private authenticateService: AuthenticateService) {
@@ -49,6 +50,7 @@ export class ChildRegistryComponent implements OnInit {
     this.formData.gender = form.value.gender;
     this.formData.diseases = form.value.diseases;
     this.formData.ethnicity = form.value.ethnicity;
+    this.formData.relation = form.value.relation;
 
     const childTreatments = [];
 
@@ -67,7 +69,7 @@ export class ChildRegistryComponent implements OnInit {
 
     this.authenticateService.registerChild(this.formData.fullName, this.formData.username,
       this.formData.age, this.formData.gender, JSON.stringify(childTreatmentsHolder), this.formData.diseases,
-      this.formData.ethnicity).then(() => {
+      this.formData.ethnicity, this.formData.relation).then(() => {
       console.log('se registro exitosamente el menor');
 
     }, error => {

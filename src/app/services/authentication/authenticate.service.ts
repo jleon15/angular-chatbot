@@ -5,10 +5,10 @@ import {Treatment} from '../../model/Treatment';
 @Injectable()
 export class AuthenticateService {
 
-  static readonly LOGIN_URL = '';
-  static readonly LOGOUT_URL = '';
-  static readonly lLOGGED_IN_URL = '';
-  static readonly AUTHENTICATED_URL = '';
+  static readonly LOGIN_URL = 'http://localhost:8080/ws/login';
+  static readonly LOGOUT_URL = 'http://localhost:8080/ws/logout';
+  static readonly LOGGED_IN_URL = 'http://localhost:8080/ws/loggedIn';
+  static readonly AUTHENTICATED_URL = 'http://localhost:8080/ws/';
   static readonly REGISTER_CHILD_URL = 'http://localhost:8080/ws/child';
 
   constructor(private http: HttpClient) {
@@ -24,9 +24,9 @@ export class AuthenticateService {
   }
 
   registerChild(fullName: string, username: string, age: string,
-                gender: string, treatments: string, diseases: string, ethnicity: string): Promise<any> {
+                gender: string, treatments: string, diseases: string, ethnicity: string, relation: string): Promise<any> {
     const bodyParameters = `fullName=${fullName}&username=${username}&age=${age}&gender=${gender}&treatments=${treatments}
-      &diseases=${diseases}&ethnicity=${ethnicity}`;
+      &diseases=${diseases}&ethnicity=${ethnicity}&relation=${relation}`;
     console.log(bodyParameters);
     return this.http
       .post(AuthenticateService.REGISTER_CHILD_URL, bodyParameters,
@@ -38,7 +38,7 @@ export class AuthenticateService {
    * web service to determine if the user is logged in
    */
   isLoggedIn(): Promise<boolean> {
-    return this.http.get(AuthenticateService.lLOGGED_IN_URL, {withCredentials: true})
+    return this.http.get(AuthenticateService.LOGGED_IN_URL, {withCredentials: true})
       .toPromise()
       .then(response => {
         return response === true;
