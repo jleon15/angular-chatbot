@@ -2,9 +2,9 @@
   <div class="row" id="chatbox">
     <div *ngFor="let message of chatMessages" class="message" [ngClass]="{'bot-message': message.fromBot}">
 
-      <div *ngIf="message.fromBot; else elseBlock" class="bot-name">Genius</div>
+      <div *ngIf="message.fromBot; else elseBlock" class="bot-name"><strong>Genius</strong></div>
       <ng-template #elseBlock>
-        <div class="name">You</div>
+        <div class="name"><strong>You</strong></div>
       </ng-template>
 
       <div>{{message.content}}</div>

@@ -7,20 +7,34 @@ import { ChatComponent } from './components/chatbot/chat/chat.component';
 import {FormsModule} from '@angular/forms';
 import {ChatService} from './services/chat/chat.service';
 import {HttpClientModule} from '@angular/common/http';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import {AuthenticateService} from './services/authentication/authenticate.service';
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
+import { ChildRegistryComponent } from './components/child-registry/child-registry.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChatComponent
+    ChatComponent,
+    HeaderComponent,
+    FooterComponent,
+    LandingPageComponent,
+    SidebarComponent,
+    ChildRegistryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFontAwesomeModule
   ],
   providers: [
-    ChatService
+    ChatService,
+    AuthenticateService
   ],
   bootstrap: [AppComponent]
 })

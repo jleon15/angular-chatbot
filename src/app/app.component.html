@@ -1,5 +1,7 @@
-<div>
-  <div>
+<div class="sidebar-transition" [class.wrapper-large]="sidebarChange" [class.wrapper-short]="!sidebarChange">
+  <app-header></app-header>
+  <app-sidebar (notify)="onSidebarChanged($event)"></app-sidebar>
+  <div class="main-content">
     <router-outlet></router-outlet>
   </div>
 </div>
