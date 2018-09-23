@@ -1,0 +1,52 @@
+nav.container-fluid {
+  height: 100px;
+  min-width: 285px;
+  width: 100%;
+  padding: 0px;
+  font-size: 91%;
+}
+
+.container-fluid .row {
+  margin-right: 0px;
+  margin-left: 0px;
+  width: 100%;
+}
+
+.main-bar {
+  width: 95%;
+}
+
+.main-bar-loggedIn {
+  width: 98%;
+}
+
+.header-button {
+  height: 34px;
+  width: 100px;
+  float: right;
+  border-radius: 10px;
+  background-color: #294261;
+  margin-top: 27px;
+  border-style: none;
+  font-size: 16px;
+  padding: 0;
+}
+
+.horizontal-line {
+  width: 100%;
+  border: 1px solid #294261;
+}
+
+.logo {
+  max-height:70px;
+  width: auto;
+  height: auto;
+}
+
+.header-logo {
+  height: 50px;
+  width: auto;
+  margin: 14px 0 26px 45px;
+  display: inline-block;
+  float: left;
+}
