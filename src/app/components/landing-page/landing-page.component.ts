@@ -12,7 +12,7 @@ export class LandingPageComponent implements OnInit {
 
   private static EMAIL_REGEX: RegExp = new RegExp('^(?!.*(\\.)\\1)([a-z0-9])+([a-z0-9]|\\-|\\.|\\_)+[a-z0-9]@(?!.*(\\.[a-z]\\.[a-z]))((?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)[a-z0-9](?:[a-z0-9]*[a-z0-9])?)([a-z0-9]+)$');
   private static ID_REGEX: RegExp = new RegExp('^[0-9]{9,10}$');
-  private static PASSWORD_REGEX: RegExp = new RegExp ('^(?!.*(.)\\1)(?=.*([A-Z]))(?=.*([a-z]))(?=.*(\\!|\\@|\\$|\\%|\\*|\\(|\\)|\\<|\\>|\\?|\\:|\\{|\\}|\\+|\\‐|\\~))([a-z]|[A-Z]|(\\!|\\@|\\$|\\%|\\*|\\(|\\)|\\<|\\>|\\?|\\:|\\{|\\}|\\+|\\‐|\\~)){7,}');
+  private static PASSWORD_REGEX: RegExp = new RegExp ('^(?!.*(.)\\1)(?=.*([A-Z]))(?=.*([a-z]))(?=.*([0-9]))(?=.*(\\!|\\@|\\$|\\%|\\*|\\(|\\)|\\<|\\>|\\?|\\:|\\{|\\}|\\+|\\‐|\\~))([a-z]|[A-Z]|(\\!|\\@|\\$|\\%|\\*|\\(|\\)|\\<|\\>|\\?|\\:|\\{|\\}|\\+|\\‐|\\~)|[0-9]){7,}');
   private static NAME_REGEX: RegExp = new RegExp('^(([A-Z][a-z]+)(\\ )?)*([A-Z][a-z]+)$');
   private static PHONE_NUMBER_REGEX: RegExp = new RegExp('^[0-9]{8}$');
 
