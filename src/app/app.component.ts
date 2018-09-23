@@ -14,11 +14,12 @@ export class AppComponent implements OnInit {
   constructor(private authenticateService: AuthenticateService) {}
 
   ngOnInit() {
-    // this.authenticateService.isLoggedIn()
-    //   .then(response => {
-    //       this.loggedIn = response;
-    //     }
-    //   );
+    this.authenticateService.isLoggedIn()
+      .then(response => {
+        console.log(response);
+          this.loggedIn = response;
+        }
+      );
   }
 
   onSidebarChanged(sidebarChanged: boolean) {

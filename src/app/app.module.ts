@@ -14,6 +14,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import {AuthenticateService} from './services/authentication/authenticate.service';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import { ChildRegistryComponent } from './components/child-registry/child-registry.component';
+import {AuthenticateGuard} from "./services/authenticate-guard.service";
+import {UnauthenticateGuard} from "./services/unauthenticate-guard.service";
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { ChildRegistryComponent } from './components/child-registry/child-regist
   ],
   providers: [
     ChatService,
-    AuthenticateService
+    AuthenticateService,
+    AuthenticateGuard,
+    UnauthenticateGuard
   ],
   bootstrap: [AppComponent]
 })

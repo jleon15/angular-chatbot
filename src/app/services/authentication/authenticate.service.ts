@@ -41,6 +41,7 @@ export class AuthenticateService {
     return this.http.get(AuthenticateService.LOGGED_IN_URL, {withCredentials: true})
       .toPromise()
       .then(response => {
+        console.log("entro ")
         return response === true;
       });
   }
