@@ -1,0 +1,19 @@
+<div class="container-fluid page-div" id="container-fluid">
+  <div id=form-content>
+    <div class="sign-in-error" [hidden]="!invalidCredentials">Cédula o contraseña incorrecta.</div>
+
+    <form>
+      <p class="input-label">Cédula</p>
+      <input type="id" [ngClass]="(IDIsValid)?'input':'input input-error'" #emailInput placeholder="Cédula" (blur)="validateIDNumber(emailInput.value, $event)" (keyup)="validateIDNumber(emailInput.value, $event); clearSignInError()"
+      />
+      <div class="email-error" [hidden]="IDIsValid">Cédula inválida.</div>
+
+      <p class="input-label password-label">Contraseña</p>
+      <input class="input" #passwordInput placeholder="Password" type="password" (keyup)="clearSignInError()"/>
+
+      <button id="enter-button" (click)="login(emailInput.value, passwordInput.value)">Ingresar</button>
+    </form>
+
+  </div>
+
+</div>

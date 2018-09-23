@@ -14,6 +14,10 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import {AuthenticateService} from './services/authentication/authenticate.service';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import { ChildRegistryComponent } from './components/child-registry/child-registry.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import {AuthenticateGuard} from './services/authenticate-guard.service';
+import {UnauthenticateGuard} from './services/unauthenticate-guard.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,9 @@ import { ChildRegistryComponent } from './components/child-registry/child-regist
     FooterComponent,
     LandingPageComponent,
     SidebarComponent,
-    ChildRegistryComponent
+    ChildRegistryComponent,
+    LoginComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +40,9 @@ import { ChildRegistryComponent } from './components/child-registry/child-regist
   ],
   providers: [
     ChatService,
-    AuthenticateService
+    AuthenticateService,
+    AuthenticateGuard,
+    UnauthenticateGuard
   ],
   bootstrap: [AppComponent]
 })

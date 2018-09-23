@@ -10,6 +10,7 @@ export class AuthenticateService {
   static readonly LOGGED_IN_URL = 'http://localhost:8080/ws/loggedIn';
   static readonly AUTHENTICATED_URL = 'http://localhost:8080/ws/';
   static readonly REGISTER_CHILD_URL = 'http://localhost:8080/ws/child';
+  static readonly SIGN_UP_URL = 'http://localhost:8080/ws/manage-user';
 
   constructor(private http: HttpClient) {
   }
@@ -17,8 +18,8 @@ export class AuthenticateService {
   /**
    * Returns an observable that tries to log in the user using the log in web service
    */
-  login(username: string, password: string, organizationIdentifier: string) {
-    const body = `username=${username}&password=${password}&organizationIdentifier=${organizationIdentifier}`;
+  login(username: string, password: string) {
+    const body = `username=${username}&password=${password}`;
     return this.http
       .post(AuthenticateService.LOGIN_URL, body, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}, withCredentials: true});
   }
@@ -55,5 +56,11 @@ export class AuthenticateService {
   logout(): Promise<any> {
     return this.http
       .post(AuthenticateService.LOGOUT_URL, null, {headers: null, withCredentials: true}).toPromise();
+  }
+
+  signUp(name: string, email: string, id: string, phone: string, password: string) {
+    const body = `name=${name}&email=${email}&id=${id}&phone=${phone}&password=${password}`;
+    return this.http
+      .post(AuthenticateService.SIGN_UP_URL, body, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, withCredentials: true });
   }
 }
