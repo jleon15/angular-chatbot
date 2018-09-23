@@ -1,0 +1,107 @@
+#container-fluid, #general-row, #container-row1, #container-row2 {
+  margin: 0px;
+  padding: 0px;
+  min-height: 90vh;
+}
+
+.page-div {
+  font-family: 'Source Sans Pro', Helvetica;
+}
+
+#form-content {
+  display: block;
+  text-align: center;
+  margin-top: 12.69vh;
+}
+
+.sign-in-error {
+  height: 23px;
+  width: 259px;
+  color: #C4183C;
+  font-size: 18px;
+  letter-spacing: -0.32px;
+  line-height: 21px;
+  margin-top: 6.64vh;
+  margin-bottom: 3.71vh;
+  margin-left: auto;
+  margin-right: auto;
+  width:53.11%;
+  text-align: left;
+}
+
+.input-label{
+  display: block;
+  height: 25px;
+  color: #495057;
+  font-size: 20px;
+  letter-spacing: -0.35px;
+  line-height: 23px;
+  width: 55.11%;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3%;
+}
+
+
+.input {
+  width: 55.11%;
+  border: 1px solid #BECAD6;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  height: 58px;
+  padding-left: 20px;
+  font-size: 20px;
+  letter-spacing: -0.35px;
+  line-height: 23px;
+}
+
+.input-error {
+  border: 1px solid #C4183C;
+}
+
+.email-error {
+  position: inherit;
+  color: #C4183C;
+  text-align: left;
+  margin-top: 1.17vh;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:53.11%;
+}
+
+.password-label {
+  margin-top: 3%;
+}
+
+#enter-button {
+  height: 74px;
+  width: 55.11%;
+  border-radius: 10px;
+  background-color: #00C7DC;
+  color: white;
+  font-size: 24px;
+  line-height: 28px;
+  border: none;
+  cursor: pointer;
+  margin-top: 5vh;
+  margin-bottom: 4.2vh;
+}
+
+.sign-in-error {
+  height: 23px;
+  width: 259px;
+  color: #C4183C;
+  font-size: 18px;
+  letter-spacing: -0.32px;
+  line-height: 21px;
+  margin-top: 6.64vh;
+  margin-bottom: 3.71vh;
+  margin-left: auto;
+  margin-right: auto;
+  width:53.11%;
+  text-align: left;
+}
+
+

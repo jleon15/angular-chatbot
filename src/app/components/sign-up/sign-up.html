@@ -1,0 +1,38 @@
+<div class="container-fluid page-div" id="container-fluid">
+  <div id=form-content>
+    <div class="sign-in-error" [hidden]="!invalidCredentials">Cédula o contraseña incorrecta.</div>
+
+    <form>
+      <p class="input-label">Nombre</p>
+      <input type="name" [ngClass]="(nameIsValid)?'input':'input input-error'" #nameInput placeholder="Nombre completo" (blur)="validateCompleteName(nameInput.value, $event)" (keyup)="validateCompleteName(nameInput.value, $event); clearSignUpError()"
+      />
+      <div class="email-error" [hidden]="nameIsValid">Nombre inválido.</div>
+
+      <p class="input-label">Correo electrónico</p>
+      <input email type="email" [ngClass]="(emailIsValid)?'input':'input input-error'" #emailInput placeholder="Correo electrónico" (blur)="validateEmail(emailInput.value, $event)" (keyup)="validateEmail(emailInput.value, $event); clearSignUpError()"
+      />
+      <div class="email-error" [hidden]="emailIsValid">Correo inválido.</div>
+
+      <p class="input-label">Cédula</p>
+      <input email type="id" [ngClass]="(IDIsValid)?'input':'input input-error'" #idInput placeholder="Cédula" (blur)="validateIDNumber(idInput.value, $event)" (keyup)="validateIDNumber(idInput.value, $event); clearSignUpError()"
+      />
+      <div class="email-error" [hidden]="IDIsValid">Cédula inválida.</div>
+
+      <p class="input-label">Teléfono celular</p>
+      <input email type="phone" [ngClass]="(phoneIsValid)?'input':'input input-error'" #phoneInput placeholder="Teléfono celular" (blur)="validatePhone(phoneInput.value, $event)" (keyup)="validatePhone(phoneInput.value, $event); clearSignUpError()"
+      />
+      <div class="email-error" [hidden]="phoneIsValid">Teléfono inválido.</div>
+
+      <p class="input-label password-label">Contraseña</p>
+      <input type="password" [ngClass]="(passwordIsValid)?'input':'input input-error'" #passwordInput placeholder="Contraseña" (blur)="validatePassword(passwordInput.value, $event)" (keyup)="validatePassword(passwordInput.value, $event); clearSignUpError()"
+      />
+      <div class="email-error" [hidden]="passwordIsValid">Contraseña inválida.</div>
+
+
+
+      <button id="enter-button" (click)="signUp(emailInput.value, passwordInput.value)">Ingresar</button>
+    </form>
+
+  </div>
+
+</div>
