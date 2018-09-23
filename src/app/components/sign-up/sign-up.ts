@@ -4,11 +4,11 @@ import {AuthenticationService} from '../../services/authentication/authenticatio
 
 @Component({
   selector: 'app-landing-page',
-  templateUrl: './landing-page.component.html',
-  styleUrls: ['./landing-page.component.css']
+  templateUrl: './sign-up.html',
+  styleUrls: ['./sign-up.css']
 })
 
-export class LandingPageComponent implements OnInit {
+export class SignUp implements OnInit {
 
   private static EMAIL_REGEX: RegExp = new RegExp('^(?!.*(\\.)\\1)([a-z0-9])+([a-z0-9]|\\-|\\.|\\_)+[a-z0-9]@(?!.*(\\.[a-z]\\.[a-z]))((?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)[a-z0-9](?:[a-z0-9]*[a-z0-9])?)([a-z0-9]+)$');
   private static ID_REGEX: RegExp = new RegExp('^[0-9]{9,10}$');
@@ -46,12 +46,12 @@ export class LandingPageComponent implements OnInit {
   validateEmail(email: string, event: any) {
     if (event.type == 'keyup' && !this.emailIsValid) {
       // only validate email on keyup if it has been identified as invalid
-      this.emailIsValid = LandingPageComponent.EMAIL_REGEX.test(email);
+      this.emailIsValid = SignUp.EMAIL_REGEX.test(email);
       if (email.length < 7 || email.length > 256) {
         this.emailIsValid = false;
       }
     } else if (event.type == 'blur') { // always validate the email on blur
-      this.emailIsValid = LandingPageComponent.EMAIL_REGEX.test(email);
+      this.emailIsValid = SignUp.EMAIL_REGEX.test(email);
       if (email.length < 7 || email.length > 256) {
         this.emailIsValid = false;
       }
@@ -61,36 +61,36 @@ export class LandingPageComponent implements OnInit {
   validateCompleteName(name: string, event: any) {
     if (event.type == 'keyup' && !this.nameIsValid) {
       // only validate email on keyup if it has been identified as invalid
-      this.nameIsValid = LandingPageComponent.NAME_REGEX.test(name);
+      this.nameIsValid = SignUp.NAME_REGEX.test(name);
     } else if (event.type == 'blur') { // always validate the email on blur
-      this.nameIsValid = LandingPageComponent.NAME_REGEX.test(name);
+      this.nameIsValid = SignUp.NAME_REGEX.test(name);
     }
   }
 
   validatePhone(phone: string, event: any) {
     if (event.type == 'keyup' && !this.phoneIsValid) {
       // only validate email on keyup if it has been identified as invalid
-      this.phoneIsValid = LandingPageComponent.PHONE_NUMBER_REGEX.test(phone);
+      this.phoneIsValid = SignUp.PHONE_NUMBER_REGEX.test(phone);
     } else if (event.type == 'blur') { // always validate the email on blur
-      this.phoneIsValid = LandingPageComponent.PHONE_NUMBER_REGEX.test(phone);
+      this.phoneIsValid = SignUp.PHONE_NUMBER_REGEX.test(phone);
     }
   }
 
   validatePassword(password: string, event: any) {
     if (event.type == 'keyup' && !this.passwordIsValid) {
       // only validate email on keyup if it has been identified as invalid
-      this.passwordIsValid = LandingPageComponent.PASSWORD_REGEX.test(password);
+      this.passwordIsValid = SignUp.PASSWORD_REGEX.test(password);
     } else if (event.type == 'blur') { // always validate the email on blur
-      this.passwordIsValid = LandingPageComponent.PASSWORD_REGEX.test(password);
+      this.passwordIsValid = SignUp.PASSWORD_REGEX.test(password);
     }
   }
 
   validateIDNumber(id: string, event: any) {
     if (event.type == 'keyup' && !this.IDIsValid) {
       // only validate email on keyup if it has been identified as invalid
-      this.IDIsValid = LandingPageComponent.ID_REGEX.test(id);
+      this.IDIsValid = SignUp.ID_REGEX.test(id);
     } else if (event.type == 'blur') { // always validate the email on blur
-      this.IDIsValid = LandingPageComponent.ID_REGEX.test(id);
+      this.IDIsValid = SignUp.ID_REGEX.test(id);
     }
   }
 
