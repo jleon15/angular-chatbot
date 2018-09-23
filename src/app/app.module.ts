@@ -11,7 +11,6 @@ import { LoginComponent } from './components/authentication/login/login.componen
 import { SignUp } from './components/sign-up/sign-up';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import {AuthenticateService} from './services/authentication/authenticate.service';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
@@ -27,7 +26,6 @@ import {UnauthenticateGuard} from './services/unauthenticate-guard.service';
     SignUp,
     HeaderComponent,
     FooterComponent,
-    LandingPageComponent,
     SidebarComponent,
     ChildRegistryComponent
   ],
